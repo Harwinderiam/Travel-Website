@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incredible India Travel Guide</title>
+    <style>
+        /* Modern CSS Reset and Variables */
+        :root {
+            --primary: #FF9933;
+            --secondary: #138808;
+            --accent: #000080;
+            --white: #ffffff;
+            --black: #000000;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            color: var(--black);
+            overflow-x: hidden;
+        }
+
+        /* Modern Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Hero Section with Modern Animation */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                        url('/api/placeholder/1920/1080');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: grid;
+            place-items: center;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            max-width: 600px;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        /* Modern Navigation */
+        .nav {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--black);
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Regions Grid */
+        .regions {
+            padding: 5rem 0;
+            background: var(--gray-100);
+        }
+
+        .regions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .region-card {
+            background: var(--white);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+
+        .region-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .region-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .region-content {
+            padding: 1.5rem;
+        }
+
+        /* Landmarks Gallery */
+        .landmarks {
+            padding: 5rem 0;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.5rem;
+            aspect-ratio: 1;
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: var(--white);
+            transform: translateY(100%);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.1);
+        }
+
+        /* Food Section */
+        .cuisine {
+            padding: 5rem 0;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                        url('/api/placeholder/1920/1080');
+            background-size: cover;
+            background-attachment: fixed;
+            color: var(--white);
+        }
+
+        .cuisine-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .cuisine-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Travel Tips */
+        .tips {
+            padding: 5rem 0;
+        }
+
+        .tips-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .tip-card {
+            padding: 2rem;
+            border-radius: 1rem;
+            background: var(--gray-100);
+            transition: var(--transition);
+        }
+
+        .tip-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Festivals Section */
+        .festivals {
+            padding: 5rem 0;
+            background: var(--gray-100);
+        }
+
+        .festival-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem 0;
+        }
+
+        .festival-timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            background: var(--primary);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .timeline-content {
+            position: relative;
+            width: calc(50% - 30px);
+            padding: 1.5rem;
+            background: var(--white);
+            border-radius: 1rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .timeline-content {
+                width: calc(100% - 30px);
+                margin: 0 auto !important;
+            }
+
+            .festival-timeline::before {
+                left: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <div>
+            <h1>Discover Incredible India</h1>
+            <p>A land of diversity, culture, and timeless traditions</p>
+        </div>
+    </header>
+
+    <nav class="nav">
+        <ul class="nav-links">
+            <li><a href="#regions">Regions</a></li>
+            <li><a href="#landmarks">Landmarks</a></li>
+            <li><a href="#cuisine">Cuisine</a></li>
+            <li><a href="#festivals">Festivals</a></li>
+            <li><a href="#tips">Travel Tips</a></li>
+        </ul>
+    </nav>
+
+    <section id="regions" class="regions">
+        <div class="container">
+            <h2>Explore Indian Regions</h2>
+            <div class="regions-grid">
+                <!-- North India -->
+                <div class="region-card">
+                    <img src="/api/placeholder/400/300" alt="North India" class="region-img">
+                    <div class="region-content">
+                        <h3>North India</h3>
+                        <p>Home to the majestic Himalayas, spiritual Varanasi, and the iconic Taj Mahal...</p>
+                    </div>
+                </div>
+                <!-- South India -->
+                <div class="region-card">
+                    <img src="/api/placeholder/400/300" alt="South India" class="region-img">
+                    <div class="region-content">
+                        <h3>South India</h3>
+                        <p>Experience ancient temples, backwaters, and rich cultural heritage...</p>
+                    </div>
+                </div>
+                <!-- More regions... -->
+            </div>
+        </div>
+    </section>
+
+    <section id="landmarks" class="landmarks">
+        <div class="container">
+            <h2>Iconic Landmarks</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="/api/placeholder/400/400" alt="Taj Mahal" class="gallery-img">
+                    <div class="gallery-caption">
+                        <h3>Taj Mahal</h3>
+                        <p>Agra, Uttar Pradesh</p>
+                    </div>
+                </div>
+                <!-- More landmarks... -->
+            </div>
+        </div>
+    </section>
+
+    <section id="cuisine" class="cuisine">
+        <div class="container">
+            <h2>Indian Cuisine</h2>
+            <div class="cuisine-grid">
+                <div class="cuisine-card">
+                    <h3>North Indian</h3>
+                    <p>Rich, creamy curries, tandoori specialties, and various breads...</p>
+                </div>
+                <!-- More cuisine cards... -->
+            </div>
+        </div>
+    </section>
+
+    <section id="tips" class="tips">
+        <div class="container">
+            <h2>Travel Tips</h2>
+            <div class="tips-container">
+                <div class="tip-card">
+                    <h3>Best Time to Visit</h3>
+                    <p>October to March offers pleasant weather across most regions...</p>
+                </div>
+                <!-- More tips... -->
+            </div>
+        </div>
+    </section>
+
+    <section id="festivals" class="festivals">
+        <div class="container">
+            <h2>Festival Calendar</h2>
+            <div class="festival-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Diwali (October/November)</h3>
+                        <p>The festival of lights celebrates the victory of light over darkness...</p>
+                    </div>
+                </div>
+                <!-- More festivals... -->
+            </div>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,202 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+    --primary-color: #FF9933;
+    --secondary-color: #138808;
+    --accent-color: #000080;
+    --text-color: #333;
+    --light-bg: #f5f5f5;
+}
+
+body {
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+/* Header Styles */
+.header {
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/Images/background.avif');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+    position: relative;
+    height: 500px;
+}
+
+.header h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.header p {
+    font-size: 1.2em;
+}
+
+/* Navigation */
+.nav {
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav a:hover {
+    color: var(--primary-color);
+}
+
+/* Featured Post */
+.featured-post {
+    padding: 50px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.featured-post h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--accent-color);
+}
+
+.featured-card {
+    display: flex;
+    gap: 30px;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.featured-image {
+    flex: 1;
+    min-height: 400px;
+    background: url('/Images/tours/TajMahal1.jpg') center/cover;
+}
+
+.featured-content {
+    flex: 1;
+    padding: 30px;
+}
+
+/* Recent Posts Grid */
+.recent-posts {
+    background: var(--light-bg);
+    padding: 50px 20px;
+}
+
+.recent-posts h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--accent-color);
+}
+
+.posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.post-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.post-image {
+    height: 200px;
+    background: url('Images/Kerala.jpg') center/cover;
+}
+
+.post-content {
+    padding: 20px;
+}
+
+/* Subscribe Section */
+.subscribe {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.subscribe form {
+    max-width: 500px;
+    margin: 30px auto 0;
+    display: flex;
+    gap: 10px;
+}
+
+.subscribe input {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+}
+
+.subscribe button {
+    padding: 15px 30px;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.subscribe button:hover {
+    background: #000066;
+}
+
+/* Footer */
+.footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .featured-card {
+        flex-direction: column;
+    }
+
+    .featured-image {
+        min-height: 300px;
+    }
+
+    .nav ul {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .subscribe form {
+        flex-direction: column;
+    }
+}
